@@ -10,7 +10,7 @@ module Janky
           build.branch_url
         ]
 
-        ::Janky::ChatService.speak(message, build.room_id, {:color => "green"})
+        ::Janky::ChatService.speak(message, build.room, {:color => "green"})
       end
 
       def self.completed(build)
