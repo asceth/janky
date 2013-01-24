@@ -75,6 +75,8 @@ module Janky
           http.verify_mode = OpenSSL::SSL::VERIFY_PEER
           http.ca_path     = "/etc/ssl/certs"
         end
+
+        http
       end
 
       def self.exists?(server_url, name)
