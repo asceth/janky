@@ -114,7 +114,7 @@ We **strongly recommend** backing up your Janky database before upgrading.
 
 The general process is to then upgrade the gem, and then run migrate.  Here is how
 you do that on a local box you have access to (this process will differ for Heroku):
-    
+
     cd [PATH-TO-JANKY]
     gem update janky
     rake db:migrate
@@ -224,6 +224,7 @@ a few extra settings:
 * `JANKY_AUTH_CLIENT_ID`: The client ID of the OAuth application.
 * `JANKY_AUTH_CLIENT_SECRET`: The client secret of the OAuth application.
 * `JANKY_AUTH_ORGANIZATION`: The organization name. Example: "github".
+* `JANKY_AUTH_URL`: The scheme and host that's GitHub's endpoint (change for GitHub Enteprise installs). Default: "https://github.com".
 
 ### Hubot
 
@@ -287,7 +288,7 @@ Contributing
 
 Fork the [Janky repository on GitHub](https://github.com/github/janky) and
 send a Pull Request.  Note that any changes to behavior without tests will
-be rejected.  If you are adding significant new features, please add both 
+be rejected.  If you are adding significant new features, please add both
 tests and documentation.
 
 Copying

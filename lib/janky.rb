@@ -161,6 +161,7 @@ module Janky
           :secret => settings["JANKY_AUTH_CLIENT_SECRET"],
           :client_id => settings["JANKY_AUTH_CLIENT_ID"],
           :scopes => "repo",
+          :oauth_domain => settings["JANKY_AUTH_URL"] || "https://github.com",
         },
       })
     end
