@@ -67,15 +67,22 @@ module Janky
     end
 
     class HTTP
+      def self.http!(uri)
+        http = Net::HTTP.new(uri.host, uri.port)
+
+        if uri.scheme == "https"
+          http.use_ssl = true
+          http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+          http.ca_path     = "/etc/ssl/certs"
+        end
+      end
+
       def self.exists?(server_url, name)
         uri  = server_url
         user = uri.user
         pass = uri.password
         path = uri.path
-        http = Net::HTTP.new(uri.host, uri.port)
-        if uri.scheme == "https"
-          http.use_ssl = true
-        end
+        http = http!(uri)
 
         get = Net::HTTP::Get.new("#{path}/job/#{name}/")
         get.basic_auth(user, pass) if user && pass
@@ -97,10 +104,8 @@ module Janky
         user = uri.user
         pass = uri.password
         path = uri.path
-        http = Net::HTTP.new(uri.host, uri.port)
-        if uri.scheme == "https"
-          http.use_ssl = true
-        end
+
+        http = http!(uri)
 
         post = Net::HTTP::Post.new("#{path}/createItem?name=#{name}")
         post.basic_auth(user, pass) if user && pass
