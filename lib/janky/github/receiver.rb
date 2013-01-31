@@ -46,6 +46,8 @@ module Janky
       end
 
       def valid_signature?
+        return true if @request.env["HTTP_X_HUB_SIGNATURE"].nil?
+
         digest    = OpenSSL::Digest::Digest.new("sha1")
         signature = @request.env["HTTP_X_HUB_SIGNATURE"].split("=").last
 
