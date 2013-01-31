@@ -162,6 +162,7 @@ Using Janky with [GitHub Enterprise][ghe] requires one extra setting:
 [ghe]: https://enterprise.github.com
 
 * `JANKY_GITHUB_PRIVATE_MODE`: Set to `'true'` if your GitHub Enterprise instance is in private mode
+* `JANKY_GITHUB_INSECURE_HOOKS`: Set to `'true'` if your GitHub Enterprise instance is POSTing web hooks to self signed domains
 ### GitHub Status API
 
 https://github.com/blog/1227-commit-status-api

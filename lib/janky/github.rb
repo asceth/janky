@@ -10,7 +10,7 @@ module Janky
     # git_host - Hostname where git repos are hosted. e.g. "github.com"
     #
     # Returns nothing.
-    def self.setup(user, password, secret, hook_url, api_url, git_host, private_mode)
+    def self.setup(user, password, secret, hook_url, api_url, git_host, private_mode, insecure_hooks)
       @user = user
       @password = password
       @secret = secret
@@ -18,10 +18,18 @@ module Janky
       @api_url = api_url
       @git_host = git_host
       @private_mode = private_mode == 'true'
+      @insecure_hooks = insecure_hooks == 'true'
     end
 
     class << self
       attr_reader :secret, :git_host
+    end
+
+    # Whether to set insecure_ssl on all web hooks created
+    #
+    # Returns insecure_hooks as a boolean.
+    def self.insecure_hooks?
+      @insecure_hooks
     end
 
     # Whether private mode (ssh repo urls) should be forced

@@ -70,7 +70,8 @@ module Janky
           "config" => {
             "url"          => url,
             "secret"       => secret,
-            "content_type" => "json"
+            "content_type" => "json",
+            "insecure_ssl" => Janky::GitHub.insecure_hooks?
           }
         }
       end
