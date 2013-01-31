@@ -10,17 +10,25 @@ module Janky
     # git_host - Hostname where git repos are hosted. e.g. "github.com"
     #
     # Returns nothing.
-    def self.setup(user, password, secret, hook_url, api_url, git_host)
+    def self.setup(user, password, secret, hook_url, api_url, git_host, private_mode)
       @user = user
       @password = password
       @secret = secret
       @hook_url = hook_url
       @api_url = api_url
       @git_host = git_host
+      @private_mode = private_mode == 'true'
     end
 
     class << self
       attr_reader :secret, :git_host
+    end
+
+    # Whether private mode (ssh repo urls) should be forced
+    #
+    # Returns the private mode as a Boolean.
+    def self.private_mode?
+      @private_mode
     end
 
     # URL of the GitHub website.

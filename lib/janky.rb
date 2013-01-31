@@ -147,7 +147,8 @@ module Janky
       settings["JANKY_GITHUB_HOOK_SECRET"],
       hook_url,
       api_url,
-      git_host
+      git_host,
+      settings["JANKY_GITHUB_PRIVATE_MODE"]
     )
 
     if settings.key?("JANKY_SESSION_SECRET")
