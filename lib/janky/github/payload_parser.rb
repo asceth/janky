@@ -44,7 +44,7 @@ module Janky
 
         repository = @payload["repository"]
 
-        if repository["private"]
+        if repository["private"] || GitHub.private_mode?
           "git@#{GitHub.git_host}:#{URI(repository["url"]).path[1..-1]}"
         else
           uri = URI(repository["url"])
